@@ -1,170 +1,584 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrabothu Jhansi | Java Full Stack Developer Portfolio</title>
-    <!-- Tailwind CSS for modern styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-indigo-500 selection:text-white">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arrabothu Jhansi - Java Full Stack Developer Portfolio">
+<title>Arrabothu Jhansi | Developer Portfolio</title>
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-bold text-lg text-indigo-600 tracking-tight">AJ.dev</a>
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
-                <a href="#about" class="hover:text-indigo-600 transition">About</a>
-                <a href="#skills" class="hover:text-indigo-600 transition">Skills</a>
-                <a href="#experience" class="hover:text-indigo-600 transition">Experience</a>
-                <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
-                <a href="#education" class="hover:text-indigo-600 transition">Education</a>
-            </nav>
-            <div class="flex items-center space-x-3">
-                <a href="https://github.com/Jhansi184" target="_blank" class="text-slate-600 hover:text-indigo-600 transition" aria-label="GitHub">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <a href="https://linkedin.com/in/arrabothu-jhansi" target="_blank" class="text-slate-600 hover:text-indigo-600 transition" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                </a>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #0b1020;
+    --card: #111a2e;
+    --text: #eef3ff;
+    --muted: #a6b2ca;
+    --purple: #8b7cff;
+    --cyan: #45d6c5;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1120px;
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(11,16,32,0.95);
+    border-bottom: 1px solid #263047;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--cyan);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--cyan);
+}
+
+/* HOME */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: var(--purple);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.badge {
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 8px 15px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: var(--cyan);
+    color: #07111c;
+}
+
+.profile {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--cyan));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    font-weight: bold;
+    color: #0b1020;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 35px;
+}
+
+.section-title span {
+    color: var(--cyan);
+}
+
+.about {
+    color: var(--muted);
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid #263047;
+    padding: 25px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: var(--purple);
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags span {
+    background: #202c45;
+    padding: 7px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+/* PROJECTS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.project p {
+    color: var(--muted);
+    margin: 12px 0;
+}
+
+.project a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* EXPERIENCE */
+
+.experience {
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+}
+
+.experience .card p {
+    color: var(--muted);
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+    background: var(--card);
+    padding: 45px 20px;
+    border-radius: 20px;
+}
+
+.contact p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.contact a {
+    margin: 8px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--muted);
+    border-top: 1px solid #263047;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding: 60px 0;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .profile {
+        width: 180px;
+        height: 180px;
+        font-size: 55px;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+    <div class="logo">JHANSI.</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+</div>
+</header>
+
+<!-- HOME -->
+
+<section class="container hero" id="home">
+
+<div class="hero-content">
+
+    <span class="badge">Java Full Stack Developer</span>
+
+    <h1>
+        Hi, I'm <span>Arrabothu Jhansi</span>
+    </h1>
+
+    <p>
+        I am a passionate Java Full Stack Developer interested
+        in building responsive websites, backend applications
+        and database-driven software using Java and modern
+        web technologies.
+    </p>
+
+    <div class="buttons">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn">Contact Me</a>
+        <a href="resume.pdf" class="btn" download>Download Resume</a>
+    </div>
+
+</div>
+
+<div class="profile">AJ</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container">
+
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <p class="about">
+        I am an aspiring Java Full Stack Developer with knowledge
+        of Core Java, Object-Oriented Programming, Spring Boot,
+        REST APIs, Hibernate, MySQL, HTML, CSS, JavaScript and
+        React.js.
+
+        I enjoy developing applications, solving programming
+        problems and continuously improving my technical skills.
+        My goal is to build reliable and user-friendly software
+        applications.
+    </p>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+<div class="container">
+
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="skills-grid">
+
+        <div class="card">
+            <h3>Backend Development</h3>
+            <div class="tags">
+                <span>Core Java</span>
+                <span>OOP</span>
+                <span>JDBC</span>
+                <span>Spring Boot</span>
+                <span>Spring MVC</span>
+                <span>Hibernate</span>
+                <span>JPA</span>
+                <span>REST API</span>
             </div>
         </div>
-    </header>
 
-    <!-- Main Container -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
-
-        <!-- Hero Section -->
-        <section id="about" class="space-y-6 pt-4">
-            <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full uppercase tracking-wider">
-                Java Full Stack Developer
+        <div class="card">
+            <h3>Frontend Development</h3>
+            <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React.js</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-                Hi, I'm <span class="text-indigo-600">Arrabothu Jhansi</span>
-            </h1>
-            <p class="text-lg text-slate-600 max-w-2xl">
-                Java Full Stack Developer with hands-on experience building, testing, and deploying end-to-end web applications using Core Java, Spring Boot, REST APIs, Hibernate/JPA, and MySQL. Seeking a Software Engineer / Java Developer role to contribute to production-grade systems.
+        </div>
+
+        <div class="card">
+            <h3>Database & Tools</h3>
+            <div class="tags">
+                <span>MySQL</span>
+                <span>PostgreSQL</span>
+                <span>SQL</span>
+                <span>Postman</span>
+                <span>Git</span>
+                <span>GitHub</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+<div class="container">
+
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <div class="projects-grid">
+
+        <div class="card project">
+            <div class="project-icon">📚</div>
+
+            <h3>Samskrutapadakshepah - Learn Sanskrit</h3>
+
+            <p>
+                A Sanskrit learning platform designed to make
+                learning easier through interactive lessons,
+                grammar tutorials, vocabulary exercises, quizzes
+                and cultural information.
             </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-                <a href="mailto:arrabothujhansireddy@gmail.com" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-indigo-600 text-white font-medium shadow-sm hover:bg-indigo-700 transition">
-                    <i class="fa-solid fa-envelope mr-2"></i> Contact Me
-                </a>
-                <a href="https://github.com/Jhansi184" target="_blank" class="inline-flex items-center px-5 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-50 transition">
-                    <i class="fa-brands fa-github mr-2"></i> GitHub Profile
-                </a>
+
+            <div class="tags">
+                <span>Learning Platform</span>
+                <span>Interactive Lessons</span>
+                <span>Quizzes</span>
             </div>
-        </section>
 
-        <!-- Technical Skills Section -->
-        <section id="skills" class="space-y-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900 flex items-center"><i class="fa-solid fa-code text-indigo-600 mr-2"></i> Programming Languages</h3>
-                    <p class="text-sm text-slate-600">Java (Core Java, OOPS, Multithreading, Exception Handling)</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900 flex items-center"><i class="fa-solid fa-server text-indigo-600 mr-2"></i> Backend Technologies</h3>
-                    <p class="text-sm text-slate-600">Spring Boot, Spring MVC, Spring Security, RESTful APIs, Hibernate/JPA, JDBC, Microservices</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900 flex items-center"><i class="fa-solid fa-laptop-code text-indigo-600 mr-2"></i> Frontend & Databases</h3>
-                    <p class="text-sm text-slate-600">React.js, JavaScript, HTML5, CSS3, MySQL, PostgreSQL / Neon DB</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900 flex items-center"><i class="fa-solid fa-tools text-indigo-600 mr-2"></i> Tools & Environments</h3>
-                    <p class="text-sm text-slate-600">Git, Postman API Testing, Eclipse IDE, VS Code</p>
-                </div>
+            <br>
+
+            <a href="https://github.com/jhansi184"
+               target="_blank">
+               View on GitHub →
+            </a>
+        </div>
+
+        <div class="card project">
+            <div class="project-icon">📝</div>
+
+            <h3>Dynamic Question Paper Generation System</h3>
+
+            <p>
+                An application designed to simplify question
+                paper preparation by organizing questions and
+                generating question papers dynamically.
+            </p>
+
+            <div class="tags">
+                <span>Application Development</span>
+                <span>Database</span>
+                <span>Automation</span>
             </div>
-        </section>
 
-        <!-- Work Experience Section -->
-        <section id="experience" class="space-y-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2">Work Experience</h2>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                <div class="flex flex-col md:flex-row md:items-center justify-between">
-                    <h3 class="text-lg font-bold text-slate-900">Software Developer Intern</h3>
-                    <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full w-fit mt-1 md:mt-0">Sep 2025 - Nov 2025</span>
-                </div>
-                <p class="text-sm font-medium text-indigo-600">AICTE Virtual Internship (Edu Skills)</p>
-                <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
-                    <li>Engineered Java application modules applying core OOP principles, modularizing codebase architecture to improve overall code maintainability by 20%.</li>
-                    <li>Implemented database connectivity using JDBC and executed CRUD operations against MySQL, strengthening backend data-handling fundamentals.</li>
-                    <li>Designed and developed RESTful APIs using Spring Boot, implementing GET, POST, PUT and DELETE endpoints for CRUD operations on user and application data.</li>
-                </ul>
-            </div>
-        </section>
+            <br>
 
-        <!-- Key Projects Section -->
-        <section id="projects" class="space-y-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2">Key Projects</h2>
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Project 1 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-slate-900">Samskruthapadakshepah - Sanskrit Learning Platform</h3>
-                        <a href="https://github.com/Jhansi184/sanskrit_application" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium inline-flex items-center">
-                            <i class="fa-brands fa-github mr-1"></i> GitHub Repo
-                        </a>
-                    </div>
-                    <p class="text-xs font-mono text-slate-500">Tech Stack: Java, Spring Boot, React.js, Spring Security, PostgreSQL / Neon, REST APIs</p>
-                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
-                        <li>Built a full-stack Sanskrit learning platform with frontend and a Spring Boot backend, featuring interactive learning modules and progress tracking.</li>
-                        <li>Developed 10+ RESTful API endpoints for user management and progress tracking, and tested them with Postman.</li>
-                        <li>Designed the PostgreSQL on Neon DB and used Hibernate/JPA to connect the Spring Boot backend to the tables.</li>
-                    </ul>
-                </div>
+            <a href="https://github.com/jhansi184"
+               target="_blank">
+               View on GitHub →
+            </a>
+        </div>
 
-                <!-- Project 2 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-slate-900">Dynamic Question Paper Generation System</h3>
-                        <a href="https://github.com/Jhansi184/myminipjct" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium inline-flex items-center">
-                            <i class="fa-brands fa-github mr-1"></i> GitHub Repo
-                        </a>
-                    </div>
-                    <p class="text-xs font-mono text-slate-500">Tech Stack: React.js, Node.js, MySQL, REST APIs, Excel Bulk Integration</p>
-                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
-                        <li>Built a web application that generates randomized question papers filtered by difficulty levels and categories.</li>
-                        <li>Implemented bulk Excel upload with parsing logic to import 500+ questions into MySQL, replacing manual entry.</li>
-                        <li>Developed REST APIs to select questions at random based on chosen filters and compile them into a question paper, reducing manual paper creation time by about 70%.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    </div>
+</div>
+</section>
 
-        <!-- Education & Certifications Section -->
-        <section id="education" class="space-y-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2">Education & Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900">Bachelor of Engineering in Information Technology</h3>
-                    <p class="text-sm text-slate-600">MVSR Engineering College (Dec 2021 - May 2025)</p>
-                    <p class="text-xs font-medium text-indigo-600">Aggregate: 75%</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-semibold text-slate-900">Java Full Stack Development Training</h3>
-                    <p class="text-sm text-slate-600">Magneq Software (Jan 2026 - Present)</p>
-                    <p class="text-xs text-slate-500">Building responsive web pages and implementing RESTful API endpoints.</p>
-                </div>
-            </div>
-            
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                <h3 class="font-semibold text-slate-900">Certifications</h3>
-                <ul class="list-disc list-inside space-y-1 text-sm text-slate-600">
-                    <li>AICTE Virtual Internship Certificate - Software Developer | Edu Skills</li>
-                    <li>Fundamentals of Full Stack Development Certification | ExcelR</li>
-                </ul>
-            </div>
-        </section>
+<!-- EXPERIENCE -->
 
-    </main>
+<section id="experience">
+<div class="container">
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 mt-20 py-8 text-center text-sm text-slate-500">
-        <p>&copy; 2026 Arrabothu Jhansi. All rights reserved.</p>
-    </footer>
+    <h2 class="section-title">My <span>Experience</span></h2>
+
+    <div class="experience">
+
+        <div class="card">
+            <h3>Java Full Stack Training</h3>
+            <p>
+                Practiced responsive web page development using
+                HTML, CSS, JavaScript and React.js. Developed
+                REST API endpoints using Spring Boot and worked
+                with MySQL CRUD operations. Tested APIs using
+                Postman.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Project Development</h3>
+            <p>
+                Worked on application development projects,
+                applying programming fundamentals, database
+                concepts and problem-solving skills.
+            </p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+
+    <div class="contact">
+
+        <h2 class="section-title">
+            Get In <span>Touch</span>
+        </h2>
+
+        <p>
+            I am interested in Java Developer and Full Stack
+            Developer opportunities. Let's connect!
+        </p>
+
+        <a href="mailto:YOUR_EMAIL@gmail.com" class="btn">
+            Email Me
+        </a>
+
+        <a href="https://github.com/jhansi184"
+           target="_blank" class="btn">
+            GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/"
+           target="_blank" class="btn">
+            LinkedIn
+        </a>
+
+    </div>
+
+</div>
+</section>
+
+<footer>
+    <p>© <span id="year"></span> Arrabothu Jhansi | Java Full Stack Developer</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
 
 </body>
 </html>
